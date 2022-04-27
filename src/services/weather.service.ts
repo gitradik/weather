@@ -1,6 +1,6 @@
 import { baseApi } from '../store/api/baseApi';
 
-type GeoCoordinates = { lat: number, lon: number };
+export type GeoCoordinates = { lat: number, lon: number };
 
 const extendedApi = baseApi.enhanceEndpoints({
   addTagTypes: ['Weather']
