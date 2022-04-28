@@ -1,5 +1,5 @@
-import React from 'react';
-import { CircularProgress, Grid } from '@mui/material';
+import React from "react";
+import { CircularProgress, Grid } from "@mui/material";
 
 export type LoaderProps = {
   isLoading: boolean;
@@ -17,6 +17,10 @@ function DefaultLoaderFallback() {
   );
 }
 
-export function Loader({ isLoading = false, fallback = <DefaultLoaderFallback />, children }: LoaderProps) {
+export function Loader({
+  isLoading = false,
+  fallback = <DefaultLoaderFallback />,
+  children,
+}: LoaderProps) {
   return isLoading ? fallback : children;
 }

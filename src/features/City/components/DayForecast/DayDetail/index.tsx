@@ -1,23 +1,34 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Grid, Typography, styled, Theme } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import moment from 'moment';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Grid,
+  Typography,
+  styled,
+  Theme,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import moment from "moment";
 
-import { useImageUrl } from 'hooks/useImageUrl';
-import TempTable from './TempTable';
-import { Temp, FeelsLike } from 'services/weather.service';
+import { useImageUrl } from "hooks/useImageUrl";
+import TempTable from "./TempTable";
+import { Temp, FeelsLike } from "services/weather.service";
 
 const StyledTimeBox = styled(Box)(() => ({
-  display: 'inline-block',
-  textAlign: 'center',
+  display: "inline-block",
+  textAlign: "center",
 }));
-const StyledTimeBoxTypography = styled(Typography)(({ theme }: { theme: Theme }) => ({
-  fontWeight: 'bold',
-  fontSize: '0.6rem',
-  '&:last-child': {
-    fontWeight: '300',
-    fontSize: theme.typography.subtitle2.fontSize,
-  }
-}));
+const StyledTimeBoxTypography = styled(Typography)(
+  ({ theme }: { theme: Theme }) => ({
+    fontWeight: "bold",
+    fontSize: "0.6rem",
+    "&:last-child": {
+      fontWeight: "300",
+      fontSize: theme.typography.subtitle2.fontSize,
+    },
+  })
+);
 
 type DayDetailProps = {
   date: string;
@@ -37,8 +48,24 @@ type DayDetailProps = {
   sunset: number;
 };
 
-function DayDetail({ date, timezone, temp, feelsLike, icon, description, rain, pop, windSpeed, pressure, humidity, uvi, dewPoint, sunrise, sunset }: DayDetailProps) {
-  const getIconUrl = useImageUrl('icon');
+function DayDetail({
+  date,
+  timezone,
+  temp,
+  feelsLike,
+  icon,
+  description,
+  rain,
+  pop,
+  windSpeed,
+  pressure,
+  humidity,
+  uvi,
+  dewPoint,
+  sunrise,
+  sunset,
+}: DayDetailProps) {
+  const getIconUrl = useImageUrl("icon");
 
   function renderRainValue() {
     const popPercent = pop * 100;
@@ -58,18 +85,32 @@ function DayDetail({ date, timezone, temp, feelsLike, icon, description, rain, p
           </Grid>
           <Grid item xs={3} display="flex" alignItems="center">
             <Box display="flex" alignItems="center">
-              <img src={getIconUrl(icon)} width="40px" height="40px" loading='lazy'/>
-              <Typography variant="subtitle2">{Math.round(temp.max)} / {Math.round(temp.min)}°С</Typography>
+              <img
+                src={getIconUrl(icon)}
+                width="40px"
+                height="40px"
+                loading="lazy"
+              />
+              <Typography variant="subtitle2">
+                {Math.round(temp.max)} / {Math.round(temp.min)}°С
+              </Typography>
             </Box>
           </Grid>
-          <Grid item xs={4} display="flex" alignItems="center" justifyContent="flex-end">
+          <Grid
+            item
+            xs={4}
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-end"
+          >
             <Typography
               variant="subtitle2"
               sx={{
-                fontSize: '0.75rem',
-                maxWidth: '70px',
-                textAlign: 'right'
-              }}>
+                fontSize: "0.75rem",
+                maxWidth: "70px",
+                textAlign: "right",
+              }}
+            >
               {description}
             </Typography>
           </Grid>
@@ -78,10 +119,14 @@ function DayDetail({ date, timezone, temp, feelsLike, icon, description, rain, p
       <AccordionDetails>
         <Grid container mb={2}>
           <Grid item xs={4}>
-            <Typography variant="subtitle2">Rain: {renderRainValue()}</Typography>
+            <Typography variant="subtitle2">
+              Rain: {renderRainValue()}
+            </Typography>
           </Grid>
           <Grid item xs={4}>
-            <Typography variant="subtitle2">Wind speed: {windSpeed.toPrecision(2)}m/s NNE</Typography>
+            <Typography variant="subtitle2">
+              Wind speed: {windSpeed.toPrecision(2)}m/s NNE
+            </Typography>
           </Grid>
           <Grid item xs={4}>
             <Typography variant="subtitle2">Pressure: {pressure}hPa</Typography>
@@ -93,21 +138,27 @@ function DayDetail({ date, timezone, temp, feelsLike, icon, description, rain, p
             <Typography variant="subtitle2">UV: {Math.round(uvi)}%</Typography>
           </Grid>
           <Grid item xs={4}>
-            <Typography variant="subtitle2">Dew point: {Math.round(dewPoint)}°C</Typography>
+            <Typography variant="subtitle2">
+              Dew point: {Math.round(dewPoint)}°C
+            </Typography>
           </Grid>
         </Grid>
-        <TempTable temp={temp} feelsLike={feelsLike}/>
+        <TempTable temp={temp} feelsLike={feelsLike} />
         <Grid container pt={2}>
           <Grid item xs={2}>
             <StyledTimeBox>
               <StyledTimeBoxTypography>SUNRISE</StyledTimeBoxTypography>
-              <StyledTimeBoxTypography>{moment.unix(sunrise).utc().add(timezone, 's').format('h:mma')}</StyledTimeBoxTypography>
+              <StyledTimeBoxTypography>
+                {moment.unix(sunrise).utc().add(timezone, "s").format("h:mma")}
+              </StyledTimeBoxTypography>
             </StyledTimeBox>
           </Grid>
           <Grid item xs={2}>
             <StyledTimeBox>
               <StyledTimeBoxTypography>SUNSET</StyledTimeBoxTypography>
-              <StyledTimeBoxTypography>{moment.unix(sunset).utc().add(timezone, 's').format('h:mma')}</StyledTimeBoxTypography>
+              <StyledTimeBoxTypography>
+                {moment.unix(sunset).utc().add(timezone, "s").format("h:mma")}
+              </StyledTimeBoxTypography>
             </StyledTimeBox>
           </Grid>
         </Grid>

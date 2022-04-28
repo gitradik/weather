@@ -1,52 +1,52 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 export const baseTheme = createTheme({
   status: {
-    warning: '#FFFF19',
+    warning: "#FFFF19",
   },
   palette: {
     primary: {
-      light: '#949492',
-      main: '#4e4d4a',
-      dark: '#464542',
-      contrastText: '#fff'
+      light: "#949492",
+      main: "#4e4d4a",
+      dark: "#464542",
+      contrastText: "#fff",
     },
     secondary: {
-      light: '#FF8A66',
-      main: '#ff3d00',
-      dark: '#CC3000',
-      contrastText: '#fff'
+      light: "#FF8A66",
+      main: "#ff3d00",
+      dark: "#CC3000",
+      contrastText: "#fff",
     },
     background: {
-      default: '#ddd',
-      paper: '#fff',
-      light: '#FF8A66',
+      default: "#ddd",
+      paper: "#fff",
+      light: "#FF8A66",
     },
     focusArea: {
-      main: '#00bcd4',
+      main: "#00bcd4",
     },
     text: {
-      primary: '#000000',
-      secondary: '#666',
+      primary: "#000000",
+      secondary: "#666",
     },
-  },      
+  },
   typography: {
     button: {
-      textTransform: 'none'
+      textTransform: "none",
     },
     subtitle1: {
-      fontSize: '1.2rem',
+      fontSize: "1.2rem",
     },
     subtitle2: {
-      fontSize: '0.95rem',
+      fontSize: "0.95rem",
     },
   },
 });
 
-declare module '@mui/material/styles' {
+declare module "@mui/material/styles" {
   interface Theme {
     status: {
-      warning: React.CSSProperties['color'];
+      warning: React.CSSProperties["color"];
     };
   }
 
@@ -62,15 +62,15 @@ declare module '@mui/material/styles' {
     rr?: string;
   }
   interface Palette {
-    focusArea: Palette['primary'];
+    focusArea: Palette["primary"];
   }
   interface PaletteOptions {
-    focusArea: PaletteOptions['primary'];
+    focusArea: PaletteOptions["primary"];
   }
 
   interface ThemeOptions {
     status: {
-      warning: React.CSSProperties['color'];
+      warning: React.CSSProperties["color"];
     };
   }
 }

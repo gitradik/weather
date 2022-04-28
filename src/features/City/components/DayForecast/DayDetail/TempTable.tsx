@@ -1,12 +1,20 @@
-import { TableContainer, Paper, TableCell, TableHead, TableRow, Table, TableBody, styled } from '@mui/material'
-;
-import { Temp, FeelsLike } from 'services/weather.service';
+import {
+  TableContainer,
+  Paper,
+  TableCell,
+  TableHead,
+  TableRow,
+  Table,
+  TableBody,
+  styled,
+} from "@mui/material";
+import { Temp, FeelsLike } from "services/weather.service";
 
 const StyledPaper = styled(Paper)(() => ({
-  boxShadow: 'none',
+  boxShadow: "none",
 }));
 const StyledTableRow = styled(TableRow)(() => ({
-  '&:last-child td, &:last-child th': { border: 0 },
+  "&:last-child td, &:last-child th": { border: 0 },
 }));
 const StyledTableCell = styled(TableCell)(() => ({
   borderBottom: 0,
@@ -35,10 +43,18 @@ function TempTable({ temp, feelsLike }: TempTableProps) {
             <StyledTableCell component="th" scope="row" sx={{ pl: 0 }}>
               TEMPERATURE
             </StyledTableCell>
-            <StyledTableCell align="right">{Math.round(temp.morn)}°C</StyledTableCell>
-            <StyledTableCell align="right">{Math.round(temp.day)}°C</StyledTableCell>
-            <StyledTableCell align="right">{Math.round(temp.eve)}°C</StyledTableCell>
-            <StyledTableCell align="right">{Math.round(temp.night)}°C</StyledTableCell>
+            <StyledTableCell align="right">
+              {Math.round(temp.morn)}°C
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              {Math.round(temp.day)}°C
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              {Math.round(temp.eve)}°C
+            </StyledTableCell>
+            <StyledTableCell align="right">
+              {Math.round(temp.night)}°C
+            </StyledTableCell>
           </StyledTableRow>
           <StyledTableRow>
             <StyledTableCell component="th" scope="row" sx={{ pl: 0 }}>

@@ -1,13 +1,13 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from 'store/store';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "store/store";
 
 type CityState = {
   cityName: string;
 };
 
 const slice = createSlice({
-  name: 'city',
-  initialState: { cityName: '' } as CityState,
+  name: "city",
+  initialState: { cityName: "" } as CityState,
   reducers: {
     setCityName: (state, { payload }: PayloadAction<string>) => {
       state.cityName = payload;

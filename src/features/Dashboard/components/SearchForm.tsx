@@ -1,28 +1,34 @@
-import { Controller, useForm } from 'react-hook-form';
-import { InputBase, Paper, Divider, IconButton } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import { Controller, useForm } from "react-hook-form";
+import { InputBase, Paper, Divider, IconButton } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 type SearchFormProps = {
   defaultValue: string;
   onSubmit: (value: string) => void;
   placeholder?: string;
 };
-function SearchForm({ defaultValue, onSubmit, placeholder = 'Search' }: SearchFormProps) {
-  const { control, handleSubmit, formState, getValues } = useForm<{ city: string }>({
-    mode: 'all',
-    reValidateMode: 'onSubmit',
+function SearchForm({
+  defaultValue,
+  onSubmit,
+  placeholder = "Search",
+}: SearchFormProps) {
+  const { control, handleSubmit, formState, getValues } = useForm<{
+    city: string;
+  }>({
+    mode: "all",
+    reValidateMode: "onSubmit",
   });
 
   function submit() {
     onSubmit(getValues().city);
-  };
+  }
 
   return (
     <Paper
       component="form"
       noValidate
       onSubmit={handleSubmit(submit)}
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+      sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
     >
       <Controller
         name="city"
@@ -37,7 +43,12 @@ function SearchForm({ defaultValue, onSubmit, placeholder = 'Search' }: SearchFo
         )}
       />
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <IconButton type="submit" color="primary" sx={{ p: 2 }} disabled={!formState.isDirty}>
+      <IconButton
+        type="submit"
+        color="primary"
+        sx={{ p: 2 }}
+        disabled={!formState.isDirty}
+      >
         <SearchIcon />
       </IconButton>
     </Paper>

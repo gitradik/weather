@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box } from '@mui/material';
+import React from "react";
+import { Box } from "@mui/material";
 
 type StandardLayoutProps = {
   children: React.ReactElement;
@@ -7,13 +7,14 @@ type StandardLayoutProps = {
 
 export function StandardLayout({ children }: StandardLayoutProps) {
   return (
-    <Box 
+    <Box
       sx={{
-        margin: 'auto',
+        margin: "auto",
         p: 2,
         maxWidth: 750,
         flexGrow: 1,
-      }}>
+      }}
+    >
       {children}
     </Box>
   );

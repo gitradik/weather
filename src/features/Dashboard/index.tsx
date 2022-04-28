@@ -1,24 +1,35 @@
 import { Alert, Divider, Box, Paper, Grid, Theme } from "@mui/material";
 
-import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { getCityName, setCityName } from 'store/city';
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { getCityName, setCityName } from "store/city";
 import { useGetCityListQuery } from "services/city.service";
 import { Loader } from "core/components/Loader";
 import { StandardLayout } from "core/components/StandardLayout";
 import SearchForm from "./components/SearchForm";
-import CityData from './components/CityData';
+import CityData from "./components/CityData";
 
 function Dashboard() {
   const dispatch = useAppDispatch();
   const cityName = useAppSelector(getCityName);
-  const { data: cityList, isFetching } = useGetCityListQuery(cityName, { skip: !cityName });
+  const { data: cityList, isFetching } = useGetCityListQuery(cityName, {
+    skip: !cityName,
+  });
 
   function handleSubmit(value: string) {
     dispatch(setCityName(value));
   }
 
   function renderCityData(city: any) {
-    const { id, name, sys: { country }, clouds, coord, weather, main: { temp, temp_min, temp_max, pressure }, wind } = city;
+    const {
+      id,
+      name,
+      sys: { country },
+      clouds,
+      coord,
+      weather,
+      main: { temp, temp_min, temp_max, pressure },
+      wind,
+    } = city;
     const { description, icon } = weather[0];
 
     return (
@@ -45,23 +56,33 @@ function Dashboard() {
   const hasCityList = Array.isArray(cityList) && !!cityList.length;
   return (
     <>
-      <Box py={2} mb={2} display="flex" justifyContent="center" sx={{ backgroundColor: (theme: Theme) => theme.palette.background.light }}>
+      <Box
+        py={2}
+        mb={2}
+        display="flex"
+        justifyContent="center"
+        sx={{
+          backgroundColor: (theme: Theme) => theme.palette.background.light,
+        }}
+      >
         <SearchForm defaultValue={cityName} onSubmit={handleSubmit} />
       </Box>
       <Loader isLoading={isFetching}>
         <>
-          {
-            hasCityList && <StandardLayout>
+          {hasCityList && (
+            <StandardLayout>
               <Paper sx={{ p: 2 }}>
-                <Grid container spacing={2}>{cityList.map(renderCityData)}</Grid>
+                <Grid container spacing={2}>
+                  {cityList.map(renderCityData)}
+                </Grid>
               </Paper>
             </StandardLayout>
-          }
-          {
-            (!hasCityList && !!cityName) && <StandardLayout>
+          )}
+          {!hasCityList && !!cityName && (
+            <StandardLayout>
               <Alert severity="info">Not found</Alert>
             </StandardLayout>
-          }
+          )}
         </>
       </Loader>
     </>

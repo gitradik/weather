@@ -1,6 +1,6 @@
-import { baseApi } from 'store/api/baseApi';
+import { baseApi } from "store/api/baseApi";
 
-export type GeoCoordinates = { lat: number, lon: number };
+export type GeoCoordinates = { lat: number; lon: number };
 export type Temp = {
   day: number;
   eve: number;
@@ -16,21 +16,20 @@ export type FeelsLike = {
   night: number;
 };
 
-
 const appid = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
-const extendedApi = baseApi.enhanceEndpoints({
-  addTagTypes: ['Weather']
-}).injectEndpoints({
-  endpoints: build => ({
-    getWeather: build.query({
-      query: ({ lat, lon }: GeoCoordinates) =>
-        `/onecall?lat=${lat}&lon=${lon}&exclude=hourly&units=metric&appid=${appid}`,
-      providesTags: ['Weather'],
+const extendedApi = baseApi
+  .enhanceEndpoints({
+    addTagTypes: ["Weather"],
+  })
+  .injectEndpoints({
+    endpoints: (build) => ({
+      getWeather: build.query({
+        query: ({ lat, lon }: GeoCoordinates) =>
+          `/onecall?lat=${lat}&lon=${lon}&exclude=hourly&units=metric&appid=${appid}`,
+        providesTags: ["Weather"],
+      }),
     }),
-  }),
-  overrideExisting: false,
-});
+    overrideExisting: false,
+  });
 
-export const {
-  useGetWeatherQuery,
-} = extendedApi;
+export const { useGetWeatherQuery } = extendedApi;
