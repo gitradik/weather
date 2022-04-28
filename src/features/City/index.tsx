@@ -59,13 +59,23 @@ function City() {
 
   return (
     <>
-      <StandardLayout>
-        <Tooltip title="Back to dashboard">
-          <IconButton onClick={() => navigate("/dashboard")}>
-            <KeyboardBackspaceIcon />
-          </IconButton>
-        </Tooltip>
-      </StandardLayout>
+      <Box
+        mb={2}
+        sx={{
+          backgroundColor: (theme) => theme.palette.background.light,
+          position: "sticky",
+          top: 0,
+          zIndex: 1,
+        }}
+      >
+        <StandardLayout>
+          <Tooltip title="Back to dashboard">
+            <IconButton onClick={() => navigate("/dashboard")}>
+              <KeyboardBackspaceIcon />
+            </IconButton>
+          </Tooltip>
+        </StandardLayout>
+      </Box>
       <Loader isLoading={isFetching || isFetchingCity}>
         <StandardLayout>
           <Paper sx={{ p: 2 }}>

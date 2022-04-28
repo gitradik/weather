@@ -57,12 +57,15 @@ function Dashboard() {
   return (
     <>
       <Box
-        py={2}
+        py={1}
         mb={2}
         display="flex"
         justifyContent="center"
         sx={{
           backgroundColor: (theme: Theme) => theme.palette.background.light,
+          position: "sticky",
+          top: 0,
+          zIndex: 1,
         }}
       >
         <SearchForm defaultValue={cityName} onSubmit={handleSubmit} />
