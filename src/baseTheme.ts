@@ -17,6 +17,11 @@ export const baseTheme = createTheme({
       dark: '#CC3000',
       contrastText: '#fff'
     },
+    background: {
+      default: '#ddd',
+      paper: '#fff',
+      light: '#FF8A66',
+    },
     focusArea: {
       main: '#00bcd4',
     },
@@ -35,7 +40,7 @@ export const baseTheme = createTheme({
     subtitle2: {
       fontSize: '0.95rem',
     },
-  }
+  },
 });
 
 declare module '@mui/material/styles' {
@@ -45,6 +50,11 @@ declare module '@mui/material/styles' {
     };
   }
 
+  interface TypeBackground {
+    default: string;
+    paper: string;
+    light: string;
+  }
   interface PaletteColor {
     rr?: string;
   }
