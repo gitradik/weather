@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
 import { baseApi } from './api/baseApi';
+import { cityReducer } from './city';
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
+    city: cityReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

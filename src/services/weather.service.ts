@@ -1,14 +1,30 @@
 import { baseApi } from '../store/api/baseApi';
 
 export type GeoCoordinates = { lat: number, lon: number };
+export type Temp = {
+  day: number;
+  eve: number;
+  max: number;
+  min: number;
+  morn: number;
+  night: number;
+};
+export type FeelsLike = {
+  day: number;
+  eve: number;
+  morn: number;
+  night: number;
+};
 
+
+const appid = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 const extendedApi = baseApi.enhanceEndpoints({
   addTagTypes: ['Weather']
 }).injectEndpoints({
   endpoints: build => ({
-    getWeatherByGeoCoordinates: build.query({
+    getWeather: build.query({
       query: ({ lat, lon }: GeoCoordinates) =>
-        `/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
+        `/onecall?lat=${lat}&lon=${lon}&exclude=hourly&units=metric&appid=${appid}`,
       providesTags: ['Weather'],
     }),
   }),
@@ -16,5 +32,5 @@ const extendedApi = baseApi.enhanceEndpoints({
 });
 
 export const {
-  useGetWeatherByGeoCoordinatesQuery,
+  useGetWeatherQuery,
 } = extendedApi;

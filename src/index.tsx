@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 
@@ -8,6 +10,9 @@ import App from './App';
 import { baseTheme } from './baseTheme';
 import reportWebVitals from './reportWebVitals';
 import { store } from './store/store';
+import { CustomRouter } from './core/components/CustomRouter';
+
+export const history = createBrowserHistory();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,10 +20,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={baseTheme}>
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
+      <CustomRouter history={history}>
+        <ThemeProvider theme={baseTheme}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </CustomRouter>
     </Provider>
   </React.StrictMode>
 );

@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { Navigate } from 'react-router';
 
-import Dashboard from '../Dashboard';
-import City from '../City';
+import Dashboard from '../features/Dashboard';
+import City from '../features/City';
 
 function AppRoutes() {
   return (

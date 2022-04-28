@@ -1,6 +1,8 @@
 import { Box, Typography, Button, Chip } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-import { useImageUrl } from "../hooks/useImageUrl";
+import { useImageUrl } from "../../../hooks/useImageUrl";
+import { GeoCoordinates } from "../../../services/weather.service";
 
 type CityDataProps = {
   id: number;
@@ -8,12 +10,11 @@ type CityDataProps = {
   description: string;
   country: string;
   clouds: number;
-  lat: number;
-  lon: number; 
+  coord: GeoCoordinates; 
   icon: string;
   temp: number;
-  temp_min: number;
-  temp_max: number;
+  tempMin: number;
+  tempMax: number;
   pressure: number;
   speed: number;
 };
@@ -23,25 +24,25 @@ function CityData({
   name,
   country,
   clouds,
-  lat,
-  lon,
+  coord,
   description,
   icon,
   temp,
-  temp_min,
-  temp_max,
+  tempMin,
+  tempMax,
   pressure,
   speed
 }: CityDataProps) {
+  const navigate = useNavigate();
   const getFlagUrl = useImageUrl('flag');
   const getIconUrl = useImageUrl('icon');
 
   function handleClick() {
-    console.log('id', id)
+    navigate(`/city/${id}`);
   }
 
   return (
-    <>
+    <Box display="flex" justifyContent="flex-start">
       <img src={getIconUrl(icon)} width="50px" height="50px" loading='lazy'/>
       <Box ml={3}>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
@@ -54,12 +55,12 @@ function CityData({
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1, ml: 1 }}>
           <Chip color="primary" label={`${temp.toPrecision(3)}°С`} sx={{ fontWeight: 'bold', mr: 1 }}/>
           <Typography variant="subtitle2">
-            temperature from {temp_min.toPrecision(3)} to {temp_max.toPrecision(3)} °С, wind {speed} m/s. clouds {clouds} %, {pressure} hpa
+            temperature from {tempMin.toPrecision(3)} to {tempMax.toPrecision(3)} °С, wind {speed} m/s. clouds {clouds} %, {pressure} hpa
           </Typography>
         </Box>
-        <Typography ml={1}>Geo coords: {lat}, {lon}</Typography>
+        <Typography ml={1}>Geo coords: {coord.lat}, {coord.lon}</Typography>
       </Box>
-    </>
+    </Box>
   );
 }
 
