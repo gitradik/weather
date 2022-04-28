@@ -1,8 +1,8 @@
 import { Box, Typography, Button, Chip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-import { useImageUrl } from "../../../hooks/useImageUrl";
-import { GeoCoordinates } from "../../../services/weather.service";
+import { useImageUrl } from "hooks/useImageUrl";
+import { GeoCoordinates } from "services/weather.service";
 
 type CityDataProps = {
   id: number;

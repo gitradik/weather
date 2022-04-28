@@ -1,4 +1,4 @@
-import { baseApi } from '../store/api/baseApi';
+import { baseApi } from 'store/api/baseApi';
 
 const appid = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 const extendedApi = baseApi.enhanceEndpoints({

@@ -1,10 +1,10 @@
 import { Alert, Divider, Box, Paper, Grid, Theme } from "@mui/material";
 
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getCityName, setCityName } from '../../store/city';
-import { useGetCityListQuery } from "../../services/city.service";
-import { Loader } from "../../core/components/Loader";
-import { StandardLayout } from "../../core/components/StandardLayout";
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { getCityName, setCityName } from 'store/city';
+import { useGetCityListQuery } from "services/city.service";
+import { Loader } from "core/components/Loader";
+import { StandardLayout } from "core/components/StandardLayout";
 import SearchForm from "./components/SearchForm";
 import CityData from './components/CityData';
 

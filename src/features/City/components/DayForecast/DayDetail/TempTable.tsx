@@ -1,6 +1,6 @@
 import { TableContainer, Paper, TableCell, TableHead, TableRow, Table, TableBody, styled } from '@mui/material'
 ;
-import { Temp, FeelsLike } from '../../../../../services/weather.service';
+import { Temp, FeelsLike } from 'services/weather.service';
 
 const StyledPaper = styled(Paper)(() => ({
   boxShadow: 'none',

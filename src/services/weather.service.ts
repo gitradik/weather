@@ -1,4 +1,4 @@
-import { baseApi } from '../store/api/baseApi';
+import { baseApi } from 'store/api/baseApi';
 
 export type GeoCoordinates = { lat: number, lon: number };
 export type Temp = {

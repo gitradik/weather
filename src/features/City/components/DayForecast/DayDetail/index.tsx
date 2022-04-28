@@ -2,9 +2,9 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, Grid, Typography, s
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import moment from 'moment';
 
-import { useImageUrl } from '../../../../../hooks/useImageUrl';
+import { useImageUrl } from 'hooks/useImageUrl';
 import TempTable from './TempTable';
-import { Temp, FeelsLike } from '../../../../../services/weather.service';
+import { Temp, FeelsLike } from 'services/weather.service';
 
 const StyledTimeBox = styled(Box)(() => ({
   display: 'inline-block',

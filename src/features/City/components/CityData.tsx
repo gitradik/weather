@@ -1,7 +1,7 @@
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import moment from 'moment';
 
-import { useImageUrl } from "../../../hooks/useImageUrl";
+import { useImageUrl } from "hooks/useImageUrl";
 
 type CityDataProps = {
   name: string;

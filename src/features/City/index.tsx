@@ -2,10 +2,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Box, IconButton, Paper, Tooltip } from "@mui/material";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
-import { useGetCityQuery } from "../../services/city.service";
-import { useGetWeatherQuery } from "../../services/weather.service";
-import { Loader } from "../../core/components/Loader";
-import { StandardLayout } from "../../core/components/StandardLayout";
+import { useGetCityQuery } from "services/city.service";
+import { useGetWeatherQuery } from "services/weather.service";
+import { Loader } from "core/components/Loader";
+import { StandardLayout } from "core/components/StandardLayout";
 import CityData from "./components/CityData";
 import DayForecast from "./components/DayForecast";
 

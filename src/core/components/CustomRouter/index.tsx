@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from 'react';
 import { BrowserRouterProps, Router } from 'react-router-dom';
 import { BrowserHistory } from 'history';
-import { history as customHistory } from '../../../index';
+import { history as customHistory } from 'index';
 
 interface CustomRouterProps extends BrowserRouterProps {
   history: BrowserHistory;
